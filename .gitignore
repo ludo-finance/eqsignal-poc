@@ -1,7 +1,31 @@
+# Python cache
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+env/
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# System files
+.DS_Store
+
+# IDE settings
+.vscode/
+
+# Data & models (private or large)
 data/
 models/
-reports/
+
+# Reports: keep PDFs and PNGs, ignore temp or logs
+reports/*
+!reports/*.pdf
+!reports/*.png
+!reports/.gitkeep
+
+# Environment variables
 .env
-.ipynb_checkpoints/
