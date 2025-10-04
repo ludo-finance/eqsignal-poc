@@ -5,7 +5,7 @@ from .data import load_prices
 from .features import make_feature_table
 from .model import time_series_cv_predictions
 from .evaluate import classification_report_oos, simple_signal_pnl, REPORTS
-from .plots import price_with_ma, oos_prob_timeline
+from .plots import price_with_ma, oos_prob_timeline, momentum_states_plot
 
 def main():
     p = argparse.ArgumentParser(prog="eqsignal-poc")
@@ -27,11 +27,12 @@ def main():
 
     # Plots
     p1 = price_with_ma(meta, args.symbol)
-    p2 = oos_prob_timeline(meta, res["oof_proba"])
+    p2 = oos_prob_timeline(meta, res["oof_proba"], y)
+    p3 = momentum_states_plot(meta, args.symbol)
 
     print("Features:", feats)
     print("Saved metrics ->", (REPORTS / "metrics.json").as_posix())
-    print("Figures ->", p1, " | ", p2)
+    print("Figures ->", p1, " | ", p2, " | ", p3)
 
 if __name__ == "__main__":
     main()
